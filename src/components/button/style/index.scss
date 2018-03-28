@@ -1,0 +1,9 @@
+@import '../../style/themes/default';
+
+$btn-prefix-cls: '#{$om-prefix}-btn';
+
+.#{$btn-prefix-cls} {
+  color: red;
+}
+
+.om-btn {}
