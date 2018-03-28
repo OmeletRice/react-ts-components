@@ -1,5 +1,6 @@
 import * as React from 'react'
 import * as PropTypes from 'prop-types'
+import * as classNames from 'classnames'
 
 import './style/index.tsx'
 
@@ -7,6 +8,7 @@ export type ButtonType = 'primary' | 'warning' | 'danger'
 export type ButtonSize = 'small' | 'default' | 'large'
 
 export interface ButtonProps {
+  prefixCls?: string
   type?: ButtonType
   size?: ButtonSize
   onClick?: React.FormEventHandler<any>
@@ -16,6 +18,10 @@ export interface ButtonProps {
 }
 
 export default class Button extends React.Component<ButtonProps, any> {
+  static defaultProps = {
+    prefixCls: 'om-btn'
+  }
+
   static propTypes = {
     type: PropTypes.string,
     size: PropTypes.oneOf(['small', 'defaule', 'large']),
@@ -58,11 +64,22 @@ export default class Button extends React.Component<ButtonProps, any> {
 
   render () {
     const {
+      prefixCls,
+      type,
+      className,
       children
     } = this.props
 
+    const { clicked } = this.state
+
+    const classes = classNames(className, {
+      [`${prefixCls}--${type}`]: type,
+      [`${prefixCls}-clicked`]: clicked
+    })
+
     return (
       <button
+        className={classes}
         onClick={this.handleClick}
       >
         {children}

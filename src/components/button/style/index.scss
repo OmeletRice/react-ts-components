@@ -6,4 +6,18 @@ $btn-prefix-cls: '#{$om-prefix}-btn';
   color: red;
 }
 
-.om-btn {}
+.om-btn {
+  line-height: 1;
+
+  &--primary {
+    color: blue;
+  }
+
+  &--warning {
+    color: yellow;
+  }
+
+  &--danger {
+    color: red;
+  }
+}
